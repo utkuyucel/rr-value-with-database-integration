@@ -5,7 +5,7 @@ app = Database()
 main_money = 3500
 
 while True:
-	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\nq-Çıkış\n")
+	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\n0-Çıkış\n")
 	check = int(input("->"))
 
 	if (check == 1):
@@ -34,7 +34,7 @@ while True:
 		except:
 			print("Veritabanında bu id'de bir değer bulunmamaktadır.")
 
-	elif (check == "q"):
+	elif (check == 0):
 		print("Çıkış yapılıyor.")
 		break
 
