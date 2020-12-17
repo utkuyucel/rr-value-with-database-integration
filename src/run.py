@@ -6,9 +6,9 @@ main_money = 3500
 
 while True:
 	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\n0-Çıkış\n")
-	check = int(input("->"))
+	check = input("->")
 
-	if (check == 1):
+	if (check == "1"):
 		try:
 			name = input("Hissenin ismini giriniz: ")
 			rr_ratio = float(input("Risk/Ödül oranını giriniz: "))
@@ -19,10 +19,10 @@ while True:
 		except:
 			print("\n\nHata.\n\n")
 
-	elif (check == 2):
+	elif (check == "2"):
 		app.showAll()
 
-	elif (check == 3):
+	elif (check == "3"):
 		id = int(input("Silmek istediğiniz verinin id'sini giriniz: "))
 
 		try:
@@ -32,9 +32,11 @@ while True:
 		except:
 			print("Veritabanında bu id'de bir değer bulunmamaktadır.")
 
-	elif (check == 0):
+	elif (check == "0"):
 		print("Çıkış yapılıyor.")
 		break
 
 	else:
 		print("Böyle bir seçenek bulunmamaktadır.")
+
+		
