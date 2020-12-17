@@ -14,7 +14,6 @@ while True:
 			rr_ratio = float(input("Risk/Ödül oranını giriniz: "))
 
 			value, percentage = app.getFromAPI(main_money, rr_ratio)
-
 			app.addToDb(name, value, rr_ratio, percentage)
 
 		except:
@@ -24,7 +23,6 @@ while True:
 		app.showAll()
 
 	elif (check == 3):
-
 		id = int(input("Silmek istediğiniz verinin id'sini giriniz: "))
 
 		try:
