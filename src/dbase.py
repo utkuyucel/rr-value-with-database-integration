@@ -64,6 +64,7 @@ class Database:
 		check = "SELECT * FROM Hisseler"
 		self.cur.execute(check)
 		out = self.cur.fetchall()
+		print("Id       Name    Optimal         Rr    Percentage")
 		print("---------------------------------------------------")
 		for i in out:
 			print(i[0],"\t", i[1], "\t", i[2], "\t", i[3], "\t", i[4])
@@ -79,6 +80,7 @@ class Database:
 		self.cur.execute(delete)
 		self.commitDb()
 		print(f"{id} id'li değer silindi.")
+	
 
         
         
