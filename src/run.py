@@ -3,21 +3,6 @@ from dbase import Database
 
 app = Database()
 main_money = 3500
-# rr_ratio = 7.8
-
-# app = Database(rr_ratio)
-
-# value, percentage = app.getFromAPI(main_money)
-
-# print(value)
-# print(percentage)
-
-# # app.addToDb("KENDI", value, rr_ratio, percentage)
-# app.showAll()
-
-# app.deleteValue(1)
-
-# app.showAll()
 
 while True:
 	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\nq-Çıkış\n")
