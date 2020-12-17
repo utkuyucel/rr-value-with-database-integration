@@ -80,3 +80,5 @@ class Database:
 		self.commitDb()
 		print(f"{id} id'li değer silindi.")
 
+        
+        
