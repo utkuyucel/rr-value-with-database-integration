@@ -61,7 +61,7 @@ class Database:
 		"""
 		Showing data from Database
 		"""
-		check = "SELECT * FROM Hisseler"
+		check = "SELECT * FROM Hisseler ORDER BY RR DESC"
 		self.cur.execute(check)
 		out = self.cur.fetchall()
 		print("Id       Name    Optimal         Rr    Percentage")
