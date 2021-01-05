@@ -5,7 +5,8 @@ app = Database()
 main_money = 3700
 
 while True:
-	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\n4-Tüm verileri sil\n0-Çıkış\n")
+	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\n4-Tüm verileri sil\n5-Optimal degerleri topla \
+										\n0-Çıkış\n")
 	check = input("->")
 
 	if (check == "1"):
@@ -45,6 +46,9 @@ while True:
 		else:
 			print("Böyle bir seçenek bulunmamaktadır.\n")
 			continue
+
+	elif (check == "5"):
+		app.sumOptimal()
 
 	elif (check == "0"):
 		print("Çıkış yapılıyor.")
