@@ -2,10 +2,10 @@ import datetime
 from dbase import Database
 
 app = Database()
-main_money = 3500
+main_money = 3700
 
 while True:
-	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\n0-Çıkış\n")
+	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\n4-Tüm verileri sil\n0-Çıkış\n")
 	check = input("->")
 
 	if (check == "1"):
@@ -13,8 +13,8 @@ while True:
 			name = input("Hissenin ismini giriniz: ")
 			rr_ratio = float(input("Risk/Ödül oranını giriniz: "))
 
-			value, percentage = app.getFromAPI(main_money, rr_ratio)
-			app.addToDb(name, value, rr_ratio, percentage)
+			value, percentage, alpha = app.getFromAPI(main_money, rr_ratio)
+			app.addToDb(name, value, rr_ratio, percentage, alpha)
 
 		except:
 			print("\n\nHata.\n\n")
@@ -31,6 +31,20 @@ while True:
 
 		except:
 			print("Veritabanında bu id'de bir değer bulunmamaktadır.")
+
+	elif (check == "4"):
+		check = input("Bütün veriler silinecek, onay veriyor musunuz ? (e/h): ")
+
+		if (check.upper() == "E"):
+			app.deleteAll()
+
+		elif (check.upper() == "H"):
+			print("İşlem iptal edildi.\n")
+			continue
+
+		else:
+			print("Böyle bir seçenek bulunmamaktadır.\n")
+			continue
 
 	elif (check == "0"):
 		print("Çıkış yapılıyor.")
