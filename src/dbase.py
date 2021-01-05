@@ -17,6 +17,7 @@ class Database:
 			Optimal REAL NOT NULL, \
 			RR REAL NOT NULL, \
 			Percentage REAL NOT NULL, \
+			Alpha REAL NOT NULL, \
 			Time_ DATETIME \
 			)"
 		)
@@ -33,8 +34,9 @@ class Database:
 
 		self.value = self.output["value"]
 		self.percentage = self.output["percentage"]
+		self.alpha = self.output["alpha"]
 
-		return self.value, self.percentage
+		return self.value, self.percentage, self.alpha
 
 	def commitDb(self):
 		"""
@@ -42,7 +44,7 @@ class Database:
 		"""
 		self.con.commit()
 
-	def addToDb(self, name, value, rr_ratio, percentage):
+	def addToDb(self, name, value, rr_ratio, percentage, alpha):
 		"""
 		Adding Data to Database
 		"""
@@ -50,9 +52,10 @@ class Database:
 		self.value = value
 		self.rr_ratio = rr_ratio
 		self.percentage = percentage		
+		self.alpha = alpha
 
-		sqlvar = "INSERT INTO Hisseler(Name, Optimal, RR, Percentage, Time_) VALUES(?,?,?,?,?)"
-		self.cur.execute(sqlvar, ( self.name.upper(), self.value, self.rr_ratio, self.percentage, datetime.datetime.now()))
+		sqlvar = "INSERT INTO Hisseler(Name, Optimal, RR, Percentage, Alpha, Time_) VALUES(?,?,?,?,?,?)"
+		self.cur.execute(sqlvar, ( self.name.upper(), self.value, self.rr_ratio, self.percentage, self.alpha, datetime.datetime.now()))
 		self.commitDb()
 
 		print("Added to DB.")
@@ -64,12 +67,12 @@ class Database:
 		check = "SELECT * FROM Hisseler ORDER BY RR DESC"
 		self.cur.execute(check)
 		out = self.cur.fetchall()
-		print("Id       Name    Optimal         Rr    Percentage")
-		print("---------------------------------------------------")
+		print("Id       Name    Optimal         Rr    Percentage       alpha")
+		print("----------------------------------------------------------------")
 		for i in out:
-			print(i[0],"\t", i[1], "\t", i[2], "\t", i[3], "\t", i[4])
+			print(i[0],"\t", i[1], "\t", i[2], "\t", i[3], "\t", i[4], "\t\t", i[5])
 
-		print("---------------------------------------------------")
+		print("----------------------------------------------------------------")
 
 	def deleteValue(self, id):
 		"""
@@ -80,6 +83,16 @@ class Database:
 		self.cur.execute(delete)
 		self.commitDb()
 		print(f"{id} id'li değer silindi.")
+
+	def deleteAll(self):
+		"""
+		Deleting all rows from the database.
+		"""
+		delete_all = "DELETE FROM Hisseler"
+		self.cur.execute(delete_all)
+		self.commitDb()
+		print("Veritabanındaki bütün veriler silindi.")
+
 	
 
         
