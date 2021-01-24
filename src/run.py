@@ -2,7 +2,7 @@ import datetime
 from dbase import Database
 
 app = Database()
-main_money = 3700
+main_money = 4000 
 
 while True:
 	print("1-Deger ekle\n2-Hisseler tablosundaki verileri göster\n3-Veri sil\n4-Tüm verileri sil\n5-Optimal degerleri topla \
@@ -48,7 +48,11 @@ while True:
 			continue
 
 	elif (check == "5"):
-		app.sumOptimal()
+		x = app.sumOptimal()
+		kalan = int(main_money - x)
+		print(f"Toplam optimal para degeri: {x} TL")
+		print(f"Kalan para: {kalan} TL\n")
+
 
 	elif (check == "0"):
 		print("Çıkış yapılıyor.")
