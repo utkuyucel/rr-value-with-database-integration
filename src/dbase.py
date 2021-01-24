@@ -78,7 +78,8 @@ class Database:
 		sum_optimal = "SELECT SUM(Optimal) FROM Hisseler"
 		self.cur.execute(sum_optimal)
 		out = self.cur.fetchall()
-		print(f"\n\nToplam Optimal değer: {out[0][0]}\n\n")
+		# print(f"\n\nToplam Optimal değer: {out[0][0]}\n\n")
+		return out[0][0]
 
 
 	def deleteValue(self, id):
